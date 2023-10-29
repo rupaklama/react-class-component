@@ -27,8 +27,15 @@ class Demo extends Component {
 
         <button
           onClick={() => {
+             // note: 'setState' method creates a new object as Shallow Copy in the memory with Object.assign({}, new obj)
+            // This component will re-render since the state is a new object.
+            
             // this.setState({ name: { firstName: "Indira", lastName: "Rai" } });
             this.setState(
+              // note: The Shallow merge only updates the object keys with new values provided,
+              // other properties values remain the same & still passed by reference.
+
+              // NOTE: Updating the state with the Function is a good practice rather than assigning an Object.
               (state, props) => {
                 // first func is to update state where we have access to current state & props
                 return { name: { firstName: "Indira", lastName: "Rai" } };
