@@ -27,7 +27,7 @@ class Demo extends Component {
 
         <button
           onClick={() => {
-             // note: 'setState' method creates a new object as Shallow Copy in the memory with Object.assign({}, new obj)
+             // note: 'setState' ASYNC method creates a new object as Shallow Copy in the memory with Object.assign({}, new obj)
             // This component will re-render since the state is a new object.
             
             // this.setState({ name: { firstName: "Indira", lastName: "Rai" } });
