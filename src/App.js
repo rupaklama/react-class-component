@@ -65,6 +65,7 @@ class App extends Component {
 
     this.getUser(this.state.count);
 
+    // call getWindowWidth on initial mount & whenever resize occurs
     window.addEventListener("resize", this.getWindowWidth);
   }
 
@@ -72,9 +73,8 @@ class App extends Component {
   // [dependency] - similar to dependency array with value in useEffect hook,
   // useEffect hook will run when the value gets updated every time
   componentDidUpdate(prevProps, prevState) {
-    // note - we have access here on previously updated props & state
-    console.log("componentDidUpdate", prevProps, prevState);
-
+     console.log("componentDidUpdate has access to previous props & state ", prevProps, prevState);
+    
     // now, we can make an api call depending on state update
     // Call api when count has changed
     if (prevState.count !== this.state.count) {
@@ -90,10 +90,9 @@ class App extends Component {
   componentWillUnmount() {
     console.log("componentWillUnmount");
 
-    window.removeEventListener("resize", this.getWindowWidth);
-
     // note - Very helpful on disconnecting any network subscriptions
-    // or discontinue listening web sockets, database etc...
+    // or discontinue event listening on dom events, web sockets, database etc...
+     window.removeEventListener("resize", this.getWindowWidth);
   }
 
   onSearchChange = e => this.setState({ searchText: e.target.value });
